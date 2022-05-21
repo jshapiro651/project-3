@@ -16,7 +16,7 @@ TBD
   - Project Management Discussion
   - POC: Install Uniswap Test Stack and Run Through Demo
 - **05/23 (Mon)**
-  - Review project with entire team
+  - Create Project Synopsis
   - Diagrams for Dapp Flow
   - Divide Up Work
   - Solidity Coding w/ Uniswap Stack
