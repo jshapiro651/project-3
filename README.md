@@ -38,4 +38,5 @@ TBD
 
 ## Note
 
-This project will be removed from Jason's repo after we've received our grade
+This project will be removed from Jason's repo after we've received our grade. Be sure to make your own copy
+if you want to keep a copy past this date.
