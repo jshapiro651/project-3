@@ -16,7 +16,7 @@ TBD
   - Project Management Discussion
   - POC: Install Uniswap Test Stack and Run Through Demo
 - **05/23 (Mon)**
-  - Create Project Synopsis
+  - Update/Complete Project Synopsis
   - Diagrams for Dapp Flow
   - Divide Up Work
   - Solidity Coding w/ Uniswap Stack
@@ -31,10 +31,10 @@ TBD
 - **06/08 (Wed)**
   - Project Presentation
 
-## Questions
+## Research Questions
 
 - Is there a way to use the customer's account to pay gas fees when initiating the trade (vs. the "sender/dapp")?
--
+- TBD (team: add any questions you have here)
 
 ## Resources
 
