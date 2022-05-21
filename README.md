@@ -18,17 +18,23 @@ TBD
 - **05/23 (Mon)**
   - Review project with entire team
   - Divide Up Work
-  - Project Work (TBD)
+  - Diagrams for Dapp Flow
+  - Solidity Coding w/ Uniswap Stack
 - **05/25 (Wed)**
-  - Project Work (TBD)
+  - Solidity Coding w/ Uniswap Stack
 - **06/01 (Wed)**
-  - Project Work (TBD)
+  - Solidity Coding w/ Uniswap Stack
 - **06/04 (Sat)**
-  - Project Work (TBD)
+  - Research Questions
 - **06/06 (Mon)**
   - Finish Presentation Materials
 - **06/08 (Wed)**
   - Project Presentation
+
+## Questions
+
+- Is there a way to use the customer's account to pay gas fees when initiating the trade (vs. the "sender/dapp")?
+-
 
 ## Resources
 
