@@ -6,13 +6,9 @@
 - Jon Kearney
 - Tim Wardlow
 
----
-
 ## Project Synopsis
 
 TBD
-
----
 
 ## Schedule
 
