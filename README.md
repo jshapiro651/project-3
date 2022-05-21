@@ -30,6 +30,12 @@ TBD
 - **06/08 (Wed)**
   - Project Presentation
 
+## Resources
+
+- [Truffle Suite Documentation](https://trufflesuite.com/docs/truffle/quickstart/)
+- [Truffle Suite VS Code Extension](https://trufflesuite.com/blog/build-on-web3-with-truffle-vs-code-extension/)
+- [Uniswap Tutorial](https://docs.uniswap.org/protocol/V2/guides/smart-contract-integration/quick-start)
+
 ## Note
 
 This project will be removed from Jason's repo after we've received our grade
