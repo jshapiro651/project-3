@@ -17,8 +17,8 @@ TBD
   - POC: Install Uniswap Test Stack and Run Through Demo
 - **05/23 (Mon)**
   - Review project with entire team
-  - Divide Up Work
   - Diagrams for Dapp Flow
+  - Divide Up Work
   - Solidity Coding w/ Uniswap Stack
 - **05/25 (Wed)**
   - Solidity Coding w/ Uniswap Stack
