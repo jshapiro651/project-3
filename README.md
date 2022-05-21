@@ -13,8 +13,8 @@ TBD
 ## Schedule
 
 - **05/21 (Sat)**
-- - Project Management Discussion
-- - POC: Install Uniswap Test Stack and Run Through Demo
+  - Project Management Discussion
+  - POC: Install Uniswap Test Stack and Run Through Demo
 - **05/23 (Mon)**
   - Review project with entire team
   - Divide Up Work
