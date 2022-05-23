@@ -8,7 +8,13 @@
 
 ## Project Synopsis
 
-TBD
+### Tech Stack
+
+- Solidity (language)
+- Uniswap (Solidity API)
+- Truffle (compiler/deployer)
+- Alchemy (node that forks Ethereum’s Mainnet)
+- Ganache-CLI (blockchain server that proxies Alchemy)
 
 ## Schedule
 
