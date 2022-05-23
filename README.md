@@ -10,6 +10,7 @@
 
 ### Tech Stack
 
+- Visual Studio Code (IDE)
 - Solidity (language)
 - Uniswap (Solidity API)
 - Truffle (compiler/deployer)
