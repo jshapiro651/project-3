@@ -8,6 +8,10 @@
 
 ## Project Synopsis
 
+Create a Dapp that provides limit order functionality to Uniswap.
+
+Our scope is to create the Dapp interface to collect the user's info, add their tokens to the Smart Contract, and execute swaps on their behalf, when certain criteria is met (i.e. Swap ETH for SAITO when SAITO is 0.014 or lower).
+
 ### Tech Stack
 
 - Visual Studio Code (IDE)
@@ -40,7 +44,9 @@
 
 ## Research Questions
 
+- How do we execute a swap on behalf of a user? Will that info be stored in the Dapp or in the Contract?
 - Is there a way to use the customer's account to pay gas fees when initiating the trade (vs. the "sender/dapp")?
+- How do we make this completely trustless?
 - TBD (team: add any questions you have here)
 
 ## Resources
