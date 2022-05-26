@@ -47,6 +47,7 @@ Our scope is to create the Dapp interface to collect the user's info, add their 
 - How do we execute a swap on behalf of a user? Will that info be stored in the Dapp or in the Contract?
 - Is there a way to use the customer's account to pay gas fees when initiating the trade (vs. the "sender/dapp")?
 - How do we make this completely trustless?
+- Why doesn't the withdraw show the amount withdrawn in the transaction (MetaMask)?
 - TBD (team: add any questions you have here)
 
 ## Resources
