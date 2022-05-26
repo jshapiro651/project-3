@@ -1,0 +1,213 @@
+{
+  "contractName": "LimitOrder",
+  "abi": [
+    {
+      "inputs": [],
+      "name": "deposit",
+      "outputs": [],
+      "stateMutability": "payable",
+      "type": "function",
+      "payable": true
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.8.14+commit.80d49f37\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"name\":\"deposit\",\"outputs\":[],\"stateMutability\":\"payable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/LimitOrder.sol\":\"LimitOrder\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/contracts/LimitOrder.sol\":{\"keccak256\":\"0x208a9d9ebf812f147f5ef474e112c3f9fd264f5ac7ae5ac89f72b0d37379744a\",\"urls\":[\"bzz-raw://ae1b58d862ce7780a35a208d7538fb27cbcd67f4304dfe69a011d44dc83d28e3\",\"dweb:/ipfs/QmPJXQ8f4rKkkCDkmTSzkQwfxqxv1rtG2Fqk2xGRTyDbo4\"]}},\"version\":1}",
+  "bytecode": "0x6080604052732feb1512183545f48f6b9c5b4ebfcaf49cfca6f36000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff160217905550348015606357600080fd5b506061806100726000396000f3fe608060405260043610601c5760003560e01c8063d0e30db0146021575b600080fd5b60276029565b005b56fea2646970667358221220eef2ed3893a31f4118501af24bcceacb73f3a9df2f337b82fea159b710f5ac6364736f6c634300080e0033",
+  "deployedBytecode": "0x608060405260043610601c5760003560e01c8063d0e30db0146021575b600080fd5b60276029565b005b56fea2646970667358221220eef2ed3893a31f4118501af24bcceacb73f3a9df2f337b82fea159b710f5ac6364736f6c634300080e0033",
+  "immutableReferences": {},
+  "generatedSources": [],
+  "deployedGeneratedSources": [],
+  "sourceMap": "25:371:0:-:0;;;98:42;51:90;;;;;;;;;;;;;;;;;;;;25:371;;;;;;;;;;;;;;;;",
+  "deployedSourceMap": "25:371:0:-:0;;;;;;;;;;;;;;;;;;;;;358:36;;;:::i;:::-;;;:::o",
+  "source": "pragma solidity 0.8.14;\n\ncontract LimitOrder {\n    address payable accountOwner =\n        payable(0x2fEb1512183545f48f6b9C5b4EbfCaF49CfCa6F3);\n\n    // function withdraw(uint amount, address payable recipient) public {\n    //     require(recipient == accountOwner, \"You don’t own this account!\");\n    //     return recipient.transfer(amount);\n    // }\n\n    function deposit() public payable {}\n}\n",
+  "sourcePath": "/Users/jason/education/fintech/project-3/contracts/LimitOrder.sol",
+  "ast": {
+    "absolutePath": "project:/contracts/LimitOrder.sol",
+    "exportedSymbols": {
+      "LimitOrder": [
+        12
+      ]
+    },
+    "id": 13,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 1,
+        "literals": [
+          "solidity",
+          "0.8",
+          ".14"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:23:0"
+      },
+      {
+        "abstract": false,
+        "baseContracts": [],
+        "canonicalName": "LimitOrder",
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "fullyImplemented": true,
+        "id": 12,
+        "linearizedBaseContracts": [
+          12
+        ],
+        "name": "LimitOrder",
+        "nameLocation": "34:10:0",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "constant": false,
+            "id": 7,
+            "mutability": "mutable",
+            "name": "accountOwner",
+            "nameLocation": "67:12:0",
+            "nodeType": "VariableDeclaration",
+            "scope": 12,
+            "src": "51:90:0",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_address_payable",
+              "typeString": "address payable"
+            },
+            "typeName": {
+              "id": 2,
+              "name": "address",
+              "nodeType": "ElementaryTypeName",
+              "src": "51:15:0",
+              "stateMutability": "payable",
+              "typeDescriptions": {
+                "typeIdentifier": "t_address_payable",
+                "typeString": "address payable"
+              }
+            },
+            "value": {
+              "arguments": [
+                {
+                  "hexValue": "307832664562313531323138333534356634386636623943356234456266436146343943664361364633",
+                  "id": 5,
+                  "isConstant": false,
+                  "isLValue": false,
+                  "isPure": true,
+                  "kind": "number",
+                  "lValueRequested": false,
+                  "nodeType": "Literal",
+                  "src": "98:42:0",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "value": "0x2fEb1512183545f48f6b9C5b4EbfCaF49CfCa6F3"
+                }
+              ],
+              "expression": {
+                "argumentTypes": [
+                  {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                ],
+                "id": 4,
+                "isConstant": false,
+                "isLValue": false,
+                "isPure": true,
+                "lValueRequested": false,
+                "nodeType": "ElementaryTypeNameExpression",
+                "src": "90:8:0",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_type$_t_address_payable_$",
+                  "typeString": "type(address payable)"
+                },
+                "typeName": {
+                  "id": 3,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "90:8:0",
+                  "stateMutability": "payable",
+                  "typeDescriptions": {}
+                }
+              },
+              "id": 6,
+              "isConstant": false,
+              "isLValue": false,
+              "isPure": true,
+              "kind": "typeConversion",
+              "lValueRequested": false,
+              "names": [],
+              "nodeType": "FunctionCall",
+              "src": "90:51:0",
+              "tryCall": false,
+              "typeDescriptions": {
+                "typeIdentifier": "t_address_payable",
+                "typeString": "address payable"
+              }
+            },
+            "visibility": "internal"
+          },
+          {
+            "body": {
+              "id": 10,
+              "nodeType": "Block",
+              "src": "392:2:0",
+              "statements": []
+            },
+            "functionSelector": "d0e30db0",
+            "id": 11,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "deposit",
+            "nameLocation": "367:7:0",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 8,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "374:2:0"
+            },
+            "returnParameters": {
+              "id": 9,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "392:0:0"
+            },
+            "scope": 12,
+            "src": "358:36:0",
+            "stateMutability": "payable",
+            "virtual": false,
+            "visibility": "public"
+          }
+        ],
+        "scope": 13,
+        "src": "25:371:0",
+        "usedErrors": []
+      }
+    ],
+    "src": "0:397:0"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.8.14+commit.80d49f37.Emscripten.clang"
+  },
+  "networks": {
+    "1": {
+      "events": {},
+      "links": {},
+      "address": "0x213a0bF6De4d6D337410DC312Cd45fC89625618A",
+      "transactionHash": "0x870307ba582870786ac782782ed24180a7c33d25f099dc1ca2e6fe674d9559b8"
+    }
+  },
+  "schemaVersion": "3.4.7",
+  "updatedAt": "2022-05-26T00:28:19.789Z",
+  "networkType": "ethereum",
+  "devdoc": {
+    "kind": "dev",
+    "methods": {},
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {},
+    "version": 1
+  }
+}

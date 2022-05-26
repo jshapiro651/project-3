@@ -1,14 +1,18 @@
 pragma solidity ^0.5.0;
 
 contract LimitOrder {
-    address payable accountOwner = 0x2fEb1512183545f48f6b9C5b4EbfCaF49CfCa6F3;
+    address payable accountOwner = 0x98D32dB5496840979e7460dA7F4808Dc9979d39c;
 
-    // function withdraw(uint amount, address payable recipient) public {
-    //     require(recipient == accountOwner, "You don’t own this account!");
-    //     return recipient.transfer(amount);
-    // }
+    uint256 public balance = 0;
 
-    function deposit() public payable {}
+    function withdraw(uint256 amount, address payable recipient) public {
+        require(recipient == accountOwner, "You don’t own this account!");
+        balance = address(this).balance - amount;
+        // return recipient.transfer(amount);
+        return msg.sender.transfer(amount);
+    }
 
-    function() external payable {}
+    function deposit() public payable {
+        balance = address(this).balance;
+    }
 }
