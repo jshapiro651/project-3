@@ -60,3 +60,7 @@ Our scope is to create the Dapp interface to collect the user's info, add their 
 
 This project will be removed from Jason's repo after we've received our grade. Be sure to make your own copy
 if you want to keep a copy past this date.
+
+## Lessons Learned
+
+- Later Solidity versions have breaking changes
