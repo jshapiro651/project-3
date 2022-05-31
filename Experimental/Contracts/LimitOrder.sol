@@ -5,25 +5,6 @@ pragma solidity ^0.8.6;
 import "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/release-v4.0/contracts/token/ERC20/ERC20.sol";
 import "https://github.com/Uniswap/v2-periphery/blob/master/contracts/interfaces/IUniswapV2Router02.sol";
 
-interface IUniswapV2Pair {
-    function token0() external view returns (address);
-
-    function token1() external view returns (address);
-
-    function swap(
-        uint256 amount0Out,
-        uint256 amount1Out,
-        address to,
-        bytes calldata data
-    ) external;
-}
-
-interface IUniswapV2Factory {
-    function getPair(address token0, address token1) external returns (address);
-}
-
-///////////////////////////////////////////////////////////////////////////////
-
 contract LimitOrder {
     address internal constant UNISWAP_ROUTER_ADDRESS =
         0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D;
@@ -59,5 +40,7 @@ contract LimitOrder {
         balance = address(this).balance;
     }
 
-    fallback() external payable {}
+    fallback() external payable {
+        balance = address(this).balance;
+    }
 }
