@@ -10,24 +10,27 @@ interface IUniswapRouter is ISwapRouter {
 contract LimitOrderV3 {
     IUniswapRouter private constant uniswapRouter =
         IUniswapRouter(0xE592427A0AEce92De3Edee1F18E0157C05861564);
-    address private constant fintechBootcampProj3Token =
-        0x74B656031DfBD104dAdFB9ac0A2A620A4170b9e7;
+    address private constant FBP3T = 0x74B656031DfBD104dAdFB9ac0A2A620A4170b9e7;
     address private constant WETH9 = 0xd0A1E359811322d97991E03f863a0C30C2cF029C;
-    address payable owner;
+    address payable private owner;
     uint256 public balance = 0;
 
     constructor() {
         owner = payable(msg.sender);
     }
 
+    event BuyFromAcct(address indexed _from, uint256 _value);
+
     function buyFBP3TfromAccount(uint256 amountIn) external {
         uint256 deadline = block.timestamp + 15;
         address tokenIn = WETH9;
-        address tokenOut = fintechBootcampProj3Token;
+        address tokenOut = FBP3T;
         uint24 fee = 3000;
         address recipient = address(this);
         uint256 amountOutMinimum = 1;
         uint160 sqrtPriceLimitX96 = 0;
+
+        emit BuyFromAcct(recipient, amountIn);
 
         ISwapRouter.ExactInputSingleParams memory params = ISwapRouter
             .ExactInputSingleParams(
@@ -43,12 +46,6 @@ contract LimitOrderV3 {
 
         uniswapRouter.exactInputSingle(params);
         uniswapRouter.refundETH();
-
-        (bool success, ) = msg.sender.call{value: address(this).balance}("");
-        require(
-            success,
-            "Attempted to refund remaining ETH to sender, but failed"
-        );
     }
 
     function convertExactEthToFBP3T() external payable {
@@ -56,7 +53,7 @@ contract LimitOrderV3 {
 
         uint256 deadline = block.timestamp + 15;
         address tokenIn = WETH9;
-        address tokenOut = fintechBootcampProj3Token;
+        address tokenOut = FBP3T;
         uint24 fee = 3000;
         address recipient = msg.sender;
         uint256 amountIn = msg.value;
