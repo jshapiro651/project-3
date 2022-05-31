@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: MIT
 pragma solidity ^0.7.0;
 
 //import the ERC20 interface
@@ -76,9 +77,34 @@ interface IUniswapV2Factory {
 ///////////////////////////////////////////////////////////////////////////////
 
 contract LimitOrder {
-    address payable accountOwner = 0xBB4fFBBD43E0B406274052e5b9E942AC74e40568;
+    address private constant UNISWAP_V2_ROUTER =
+        0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D;
+
+    //address of WETH token.  This is needed because some times it is better to trade through WETH.
+    //you might get a better price using WETH.
+    //example trading from token A to WETH then WETH to token B might result in a better price
+    address private constant WETH = 0xd0A1E359811322d97991E03f863a0C30C2cF029C;
+
+    address payable accountOwner = 0x2CEa0274e15517ace17044FC513e30750f6Cc177;
 
     uint256 public balance = 0;
+
+    function swapExactETHforTokens(
+        address tokenOut,
+        uint256 amountOut,
+        uint256 deadline
+    ) external payable {
+        address[] memory path = new address[](2);
+        path[0] = WETH;
+        path[1] = tokenOut;
+
+        IUniswapV2Router(UNISWAP_V2_ROUTER).swapExactETHForTokens(
+            amountOut,
+            path,
+            msg.sender,
+            deadline
+        );
+    }
 
     function withdraw(uint256 amount, address payable recipient) public {
         //require(recipient == accountOwner, "You don’t own this account!");
@@ -89,17 +115,6 @@ contract LimitOrder {
     function deposit() public payable {
         balance = address(this).balance;
     }
-
-    /////////////////
-
-    //address of the uniswap v2 router
-    address private constant UNISWAP_V2_ROUTER =
-        0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D;
-
-    //address of WETH token.  This is needed because some times it is better to trade through WETH.
-    //you might get a better price using WETH.
-    //example trading from token A to WETH then WETH to token B might result in a better price
-    address private constant WETH = 0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2;
 
     //this swap function is used to trade from one token to another
     //the inputs are self explainatory
