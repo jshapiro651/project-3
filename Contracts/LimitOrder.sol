@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-// Contract: 0x5B398294EcdC358f55E86427e54A195A195a9823
+// Contract: 0x44bde79162D767DA1f12eC8F5C16934Ed48f1402
 pragma solidity ^0.8.6;
 
 import "https://github.com/Uniswap/uniswap-v3-periphery/blob/main/contracts/interfaces/ISwapRouter.sol";
@@ -48,7 +48,7 @@ contract LimitOrderV3 {
                 sqrtPriceLimitX96
             );
 
-        uniswapRouter.exactInputSingle(params);
+        uniswapRouter.exactInputSingle{value: amountIn}(params);
         uniswapRouter.refundETH();
     }
 
@@ -76,6 +76,8 @@ contract LimitOrderV3 {
                 sqrtPriceLimitX96
             );
 
+        // method{}() syntax explained here:
+        // https://docs.soliditylang.org/en/v0.8.11/control-structures.html?highlight=curly%20brackets#external-function-calls
         uniswapRouter.exactInputSingle{value: msg.value}(params);
         uniswapRouter.refundETH();
 
