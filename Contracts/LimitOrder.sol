@@ -1,7 +1,9 @@
 // SPDX-License-Identifier: MIT
+// Contract: 0x5B398294EcdC358f55E86427e54A195A195a9823
 pragma solidity ^0.8.6;
 
 import "https://github.com/Uniswap/uniswap-v3-periphery/blob/main/contracts/interfaces/ISwapRouter.sol";
+import "https://github.com/Uniswap/v3-periphery/blob/9ca9575d09b0b8d985cc4d9a0f689f7a4470ecb7/contracts/libraries/TransferHelper.sol";
 
 interface IUniswapRouter is ISwapRouter {
     function refundETH() external payable;
@@ -22,6 +24,8 @@ contract LimitOrderV3 {
     event BuyFromAcct(address indexed _from, uint256 _value);
 
     function buyFBP3TfromAccount(uint256 amountIn) external payable {
+        TransferHelper.safeApprove(WETH9, address(uniswapRouter), amountIn);
+
         uint256 deadline = block.timestamp + 15;
         address tokenIn = WETH9;
         address tokenOut = FBP3T;
