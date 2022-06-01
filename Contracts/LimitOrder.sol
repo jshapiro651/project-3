@@ -1,5 +1,4 @@
 // SPDX-License-Identifier: MIT
-// Contract Address: 0x1e82B855647B718DDc8011e895dE4DA68E325C8c
 pragma solidity ^0.8.6;
 
 import "https://github.com/Uniswap/uniswap-v3-periphery/blob/main/contracts/interfaces/ISwapRouter.sol";
@@ -22,7 +21,7 @@ contract LimitOrderV3 {
 
     event BuyFromAcct(address indexed _from, uint256 _value);
 
-    function buyFBP3TfromAccount(uint256 amountIn) external {
+    function buyFBP3TfromAccount(uint256 amountIn) external payable {
         uint256 deadline = block.timestamp + 15;
         address tokenIn = WETH9;
         address tokenOut = FBP3T;
@@ -60,7 +59,7 @@ contract LimitOrderV3 {
         uint256 amountIn = msg.value;
         uint256 amountOutMinimum = 1;
         uint160 sqrtPriceLimitX96 = 0;
-
+        // Documentation: https://docs.uniswap.org/protocol/guides/swaps/single-swaps
         ISwapRouter.ExactInputSingleParams memory params = ISwapRouter
             .ExactInputSingleParams(
                 tokenIn,
