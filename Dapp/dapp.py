@@ -21,7 +21,7 @@ w3 = Web3(Web3.HTTPProvider(os.getenv("WEB3_PROVIDER_URI")))   ## connection to 
 # Define the load_contract function
 def load_contract():
 
-    # Load Art Gallery ABIC:\Users\jonat\project-3\Dapp\compiled_LimitOrder.json
+    # ABIC:\Users\jonat\project-3\Dapp\compiled_LimitOrder.json
     with open(Path('compiled_LimitOrder.json')) as f:   ## defining the path to the backend
         compiled_LimitOrder = json.load(f)
 
@@ -42,6 +42,9 @@ contract = load_contract()   ## loading contract and calling 'contract'
 
 # Streamlit Title
 st.markdown('Limit Order Project')
+
+if st.sidebar.button("Buy FBP3T"):
+    contract.functions.buyFBP3TfromAccount()
 ################################################################################
 # Award Certificate
 ################################################################################
@@ -56,7 +59,7 @@ st.markdown('Limit Order Project')
 ################################################################################
 # Display Certificate
 ################################################################################
-#certificate_id = st.number_input("Enter a Certificate Token ID to display", value=0, step=1)
+#buy_FBP3T = st.number_input("Enter a Certificate Token ID to display", value=0, step=1)
 #if st.button("Display Certificate"):
     # Get the certificate owner
 #    certificate_owner = contract.functions.ownerOf(certificate_id).call()
