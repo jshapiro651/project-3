@@ -8,18 +8,39 @@
 
 ## Project Synopsis
 
-Create a Dapp that provides limit order functionality to Uniswap.
+This is the first phase of a larger project (create limit order functionality on Uniswap).
 
-Our scope is to create the Dapp interface to collect the user's info, add their tokens to the Smart Contract, and execute swaps on their behalf, when certain criteria is met (i.e. Swap ETH for SAITO when SAITO is 0.014 or lower).
+Primary Goals
 
-### Tech Stack
+- Create a Solidity contract that is able to interact with the Uniswap API
+- Create a W3 enabled page that is able to act as the Dapp’s trigger for the Smart Contract methods
+  Secondary Goals
+- Work with some new services (Ganache-CLI + Alchemy / Kovan) to create a test environment for Uniswap
+- Evaluate some Remix Alternatives (Truffle, Hard Hat)
+- Consider and investigate some “research questions” related to the larger scope of this project (given that we’re only finishing “phase one” of the total application).
 
-- Visual Studio Code (IDE)
+### Our Final Tech Stack
+
 - Solidity (language)
+- Remix (IDE)
 - Uniswap (Solidity API)
-- Truffle (compiler/deployer)
+- MetaMask (wallet)
+- Kovan Test Network (blockchain)
+
+### Other Tech Stack We Investigated
+
+- Visual Studio Code (IDE) (w/ Truffle Extension)
 - Alchemy (node that forks Ethereum’s Mainnet)
 - Ganache-CLI (blockchain server that proxies Alchemy)
+- Truffle (compiler/deployer)
+- Hard Hat (compiler/deployer)
+
+## Project Structure
+
+- [DEPLOYMENT.md](DEPLOYMENT.md) | Instructions on how these contracts were deployed
+- [Contracts](Contracts/) | Final version of our contracts
+- [Images](Images/) | Images used in our documentation
+- [Experimental](Experimental/) | Various experiments we made that led us to our final implementation; consider this "test" code
 
 ## Schedule
 
@@ -52,14 +73,11 @@ Our scope is to create the Dapp interface to collect the user's info, add their 
 
 ## Resources
 
+- [Kovan ETH/LINK faucet](https://faucets.chain.link/)
 - [Truffle Suite Documentation](https://trufflesuite.com/docs/truffle/quickstart/)
 - [Truffle Suite VS Code Extension](https://trufflesuite.com/blog/build-on-web3-with-truffle-vs-code-extension/)
 - [Uniswap Tutorial](https://docs.uniswap.org/protocol/V2/guides/smart-contract-integration/quick-start)
-
-## Note
-
-This project will be removed from Jason's repo after we've received our grade. Be sure to make your own copy
-if you want to keep a copy past this date.
+- [Ethereum Unit Converter](https://eth-converter.com/)
 
 ## Lessons Learned
 
