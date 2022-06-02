@@ -22,9 +22,10 @@ Primary Goals
 ### Our Final Tech Stack
 
 - Solidity (language)
+- Remix (IDE)
 - Uniswap (Solidity API)
-- MetaMask
-- Kovan Test Network
+- MetaMask (wallet)
+- Kovan Test Network (blockchain)
 
 ### Other Tech Stack We Investigated
 
