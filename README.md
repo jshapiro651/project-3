@@ -10,20 +10,23 @@
 
 This is the first phase of a larger project (create limit order functionality on Uniswap).
 
-Primary Goals
+### Primary Goals
 
-- Create a Solidity contract that is able to interact with the Uniswap API
+- Create a Solidity contract that is able to interact with the Uniswap V3 API
 - Create a W3 enabled page that is able to act as the Dapp’s trigger for the Smart Contract methods
-  Secondary Goals
-- Work with some new services (Ganache-CLI + Alchemy / Kovan) to create a test environment for Uniswap
+
+### Secondary Goals
+
+- Work with some new services (
 - Evaluate some Remix Alternatives (Truffle, Hard Hat)
-- Consider and investigate some “research questions” related to the larger scope of this project (given that we’re only finishing “phase one” of the total application).
+- Evaluate Test Net alternatives (Kovan Test Network, Ganache-CLI, Alchemy)
+- Collect some post-project “research questions” related to the larger scope of this project (given that we’re only finishing “phase one” of the total application).
 
 ### Our Final Tech Stack
 
 - Solidity (language)
 - Remix (IDE)
-- Uniswap (Solidity API)
+- Uniswap V3 (Solidity API)
 - MetaMask (wallet)
 - Kovan Test Network (blockchain)
 
@@ -63,7 +66,7 @@ Primary Goals
 - **06/08 (Wed)**
   - Project Presentation
 
-## Research Questions
+## Post-Project Research Questions
 
 - How do we execute a swap on behalf of a user? Will that info be stored in the Dapp or in the Contract?
 - Is there a way to use the customer's account to pay gas fees when initiating the trade (vs. the "sender/dapp")?
@@ -78,7 +81,3 @@ Primary Goals
 - [Truffle Suite VS Code Extension](https://trufflesuite.com/blog/build-on-web3-with-truffle-vs-code-extension/)
 - [Uniswap Tutorial](https://docs.uniswap.org/protocol/V2/guides/smart-contract-integration/quick-start)
 - [Ethereum Unit Converter](https://eth-converter.com/)
-
-## Lessons Learned
-
-- Later Solidity versions have breaking changes
