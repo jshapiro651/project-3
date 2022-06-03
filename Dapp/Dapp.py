@@ -41,7 +41,7 @@ def load_contract():
 contract = load_contract()
 
 # Streamlit Header
-st.markdown('Limit Order Project')
+st.markdown('Uniswap Limit Order Project')
 
 if st.sidebar.button("Buy FBP3T"):
     contract.functions.buyFBP3TfromAccount()
