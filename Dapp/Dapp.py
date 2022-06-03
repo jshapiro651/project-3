@@ -40,6 +40,12 @@ def load_contract():
 # Load the contract
 contract = load_contract()
 
+# Streamlit Header
+st.markdown('Limit Order Project')
+
+if st.sidebar.button("Buy FBP3T"):
+    contract.functions.buyFBP3TfromAccount()
+
 
 ################################################################################
 # Award Certificate
