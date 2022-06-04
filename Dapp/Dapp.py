@@ -57,24 +57,58 @@ account: LocalAccount = Account.from_key(private_key)
 # w3.middleware_onion.add(construct_sign_and_send_raw_middleware(account))
 
 st.markdown("# Uniswap Limit Order Project")
-st.markdown("## Enjoy!")
+st.markdown("## Welcome to our DApp!")
 st.text(" \n")
 
-st.sidebar.markdown("## Check Balance | Swap ETH for FBP3T | Validate Transaction")
+st.sidebar.markdown("## Check Balance | Withdraw | Deposit | Swap ETH for FBP3T | Validate Transaction")
+
+# Check Balance button
 
 if st.sidebar.button("Check Balance (wei)"):
     st.sidebar.write(f"The balance is {balance}")
 
 
-if st.sidebar.button("Withdraw"):
-    payable_recipient = st.sidebar.text_input("Input recipient address")
-    amount = st.sidebar.number_input("Input amount of ether (in wei)")
-    contract.functions.withdraw(amount, payable_recipient)
-    
+# Withdraw button
+# address = '0x74B656031DfBD104dAdFB9ac0A2A620A4170b9e7'
+
+# Create inputs for the receiver address and token amount
+# payable_recipient = '0x74B656031DfBD104dAdFB9ac0A2A620A4170b9e7'
+# amount = st.sidebar.number_input("Input amount of FBP3T")
+
+# Create a button that calls the `send_transaction` function and returns the transaction hash
+#if st.sidebar.button("Withdraw"):
+    #nonce = w3.eth.get_transaction_count(pub_account)
+    #w_txn = contract.functions.withdraw(amount, payable_recipient).buildTransaction({
+        #'chainId': 42,
+        #'gas': 3000000,
+        #'maxFeePerGas': w3.toWei('10', 'gwei'),
+        #'maxPriorityFeePerGas': w3.toWei('10', 'gwei'),
+        #'nonce': nonce,
+    #})
+
+    #signed_txn = account.signTransaction(w_txn)
+    #w3.eth.send_raw_transaction(signed_txn.rawTransaction)
+
+
+
+# Deposit button
+
+
+
+
+
+
+
+
+
+# Swap button
+
+#swap_amount = st.sidebar.number_input("Input the amount of ETH you'd like to swap for FBP3T")
 
 if st.sidebar.button("Swap ETH for FBP3T"):
+    #st.sidebar.write(swap_amount)
     nonce = w3.eth.get_transaction_count(pub_account)
-    txn = contract.functions.buyFBP3TfromAccount(156520000000000).buildTransaction({
+    txn = contract.functions.buyFBP3TfromAccount(186964000000000).buildTransaction({
         'chainId': 42,
         'gas': 3000000,
         'maxFeePerGas': w3.toWei('10', 'gwei'),
@@ -85,11 +119,6 @@ if st.sidebar.button("Swap ETH for FBP3T"):
     w3.eth.send_raw_transaction(signed_txn.rawTransaction)
 
 
-    st.text("\n")
-    st.text("\n")
-    st.markdown("## Transaction Hash:")
-
-    st.write(signed_txn)
 
     
 #if st.sidebar.button("Validated Transaction Hash")
