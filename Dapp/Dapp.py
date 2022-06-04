@@ -1,3 +1,4 @@
+from email.headerregistry import Address
 import os
 import json
 from web3 import Web3
@@ -27,7 +28,7 @@ pub_account = os.getenv("ACCOUNT")
 def load_contract():
 
     # Load Limit Order ABI
-    with open(Path('./limit_order_abi.json')) as f:
+    with open(Path('./LimitOrder_ABI.json')) as f:
         contract_abi = json.load(f)
 
     # Get the contract
@@ -44,7 +45,7 @@ contract = load_contract()
 
 # Display balance
 balance = contract.functions.balance().call()
-st.write(f"The balance is {balance}")
+#st.write(f"The balance is {balance}")
 
 # https://web3py.readthedocs.io/en/latest/web3.eth.account.html#read-a-private-key-from-an-environment-variable
 private_key = os.getenv("PRIVATE_KEY")
@@ -55,7 +56,23 @@ assert private_key.startswith(
 account: LocalAccount = Account.from_key(private_key)
 # w3.middleware_onion.add(construct_sign_and_send_raw_middleware(account))
 
-if st.button("Swap ETH for FBP3T"):
+st.markdown("# Uniswap Limit Order Project")
+st.markdown("## Enjoy!")
+st.text(" \n")
+
+st.sidebar.markdown("## Check Balance | Swap ETH for FBP3T | Validate Transaction")
+
+if st.sidebar.button("Check Balance (wei)"):
+    st.sidebar.write(f"The balance is {balance}")
+
+
+if st.sidebar.button("Withdraw"):
+    payable_recipient = st.sidebar.text_input("Input recipient address")
+    amount = st.sidebar.number_input("Input amount of ether (in wei)")
+    contract.functions.withdraw(amount, payable_recipient)
+    
+
+if st.sidebar.button("Swap ETH for FBP3T"):
     nonce = w3.eth.get_transaction_count(pub_account)
     txn = contract.functions.buyFBP3TfromAccount(156520000000000).buildTransaction({
         'chainId': 42,
@@ -67,7 +84,18 @@ if st.button("Swap ETH for FBP3T"):
     signed_txn = account.signTransaction(txn)
     w3.eth.send_raw_transaction(signed_txn.rawTransaction)
 
-# This doesn't work...
-# if st.button("Swap ETH for FBP3T"):
-#     contract.functions.buyFBP3TfromAccount(
-#         156520000000000).transact({'gas': 1000000})
+
+    st.text("\n")
+    st.text("\n")
+    st.markdown("## Transaction Hash:")
+
+    st.write(signed_txn)
+
+    
+#if st.sidebar.button("Validated Transaction Hash")
+    #transaction_hash = buyFBP3TfromAccount(chainId, gas, )
+
+ #This doesn't work...
+ #if st.button("Swap ETH for FBP3T")
+ #   contract.functions.buyFBP3TfromAccount(
+ #       156520000000000).transact({'gas': 1000000})
