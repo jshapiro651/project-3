@@ -28,9 +28,10 @@ This is the first phase of a larger project (create limit order functionality on
 - Remix (IDE)
 - Uniswap V3 (Solidity API)
 - MetaMask (wallet)
+- Infura (node)
 - Kovan Test Network (blockchain)
 
-### Other Tech Stack We Investigated
+### Other Tech Stacks We Investigated
 
 - Visual Studio Code (IDE) (w/ Truffle Extension)
 - Alchemy (node that forks Ethereum’s Mainnet)
