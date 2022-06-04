@@ -75,7 +75,6 @@ This is the first phase of a larger project (create limit order functionality on
 - Is there a way to use the customer's account to pay gas fees when initiating the trade (vs. the "sender/dapp")?
 - How do we make this completely trustless?
 - Why doesn't the withdraw show the amount withdrawn in the transaction (MetaMask)?
-- TBD (team: add any questions you have here)
 
 ## Resources
 
