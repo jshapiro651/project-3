@@ -1,6 +1,9 @@
 import os
 import json
 from web3 import Web3
+from eth_account import Account
+from eth_account.signers.local import LocalAccount
+from web3.middleware import construct_sign_and_send_raw_middleware
 from pathlib import Path
 from dotenv import load_dotenv
 import streamlit as st
@@ -8,13 +11,13 @@ import streamlit as st
 load_dotenv()  ## import env variables in .env files 
 
 # Define and connect a new Web3 provider. Copied URL from remix. Might need to just copy from the compiler if this does not work
-w3 = Web3(Web3.HTTPProvider(os.getenv("WEB3_PROVIDER_URI")))   ## connection to Remix
+w3 = Web3(Web3.HTTPProvider(os.getenv("WEB3_PROVIDER_URI")))   ## connection to Infura
 
-################################################################################
-# Contract Helper function:
-# 1. Loads the contract once using cache
-# 2. Connects to the contract using the contract address and ABI
-################################################################################
+# Set the contract address to the address of the deployed contract from Remix
+contract_address = os.getenv("SMART_CONTRACT_ADDRESS")
+
+# Set the public account
+pub_account = os.getenv("ACCOUNT")
 
 # Cache the contract on load
 @st.cache(allow_output_mutation=True)     ## cache the smart contract in the memory of the physical device running the frontend  
@@ -22,7 +25,7 @@ w3 = Web3(Web3.HTTPProvider(os.getenv("WEB3_PROVIDER_URI")))   ## connection to 
 def load_contract():
 
     # ABIC:\Users\jonat\project-3\Dapp\compiled_LimitOrder.json
-    with open(Path('compiled_LimitOrder.json')) as f:   ## defining the path to the backend
+    with open(Path('./limit_order_abi.json')) as f:   ## defining the path to the backend
         compiled_LimitOrder = json.load(f)
 
     # Set the contract address (this is the address of the deployed contract)
@@ -40,31 +43,58 @@ def load_contract():
 # Load the contract
 contract = load_contract()   ## loading contract and calling 'contract' 
 
+
+# https://web3py.readthedocs.io/en/latest/web3.eth.account.html#read-a-private-key-from-an-environment-variable
+private_key = os.getenv("PRIVATE_KEY")
+assert private_key is not None, "You must set PRIVATE_KEY environment variable"
+assert private_key.startswith(
+    "0x"), "Private key must start with 0x hex prefix"
+
+account: LocalAccount = Account.from_key(private_key)
+# w3.middleware_onion.add(construct_sign_and_send_raw_middleware(account))
+
 # Streamlit Title
-st.markdown('Limit Order Project')
+st.markdown("# Limit Order Project")
+st.text("\n")
 
-if st.sidebar.button("Buy FBP3T"):
-    contract.functions.buyFBP3TfromAccount()
-################################################################################
-# Award Certificate
-################################################################################
+st.sidebar.markdown("## Interact with the Contract")
 
-#accounts = w3.eth.accounts  ## gettting all the accounts from ganache 
-#account = accounts[0]       ## by default display the 1st account 
-#student_account = st.selectbox("Select Account", options=accounts)
-#certificate_details = st.text_input("Certificate Details", value="FinTech Certificate of Completion")
-#if st.button("Award Certificate"):
-#    contract.functions.awardCertificate(student_account, certificate_details).transact({'from': account, 'gas': 1000000})
 
-################################################################################
-# Display Certificate
-################################################################################
-#buy_FBP3T = st.number_input("Enter a Certificate Token ID to display", value=0, step=1)
-#if st.button("Display Certificate"):
-    # Get the certificate owner
-#    certificate_owner = contract.functions.ownerOf(certificate_id).call()
-#    st.write(f"The certificate was awarded to {certificate_owner}")
+# Display balance
+balance = contract.functions.balance().call()
+st.write(f"The balance is {balance} WEI")
 
-    # Get the certificate's metadata
-#    certificate_uri = contract.functions.tokenURI(certificate_id).call()
- #   st.write(f"The certificate's tokenURI metadata is {certificate_uri}")
+# Check Balance button on the sidebar
+if st.sidebar.button("Check Balance (WEI)"):
+    st.write(f"The balance is {balance} WEI")
+
+# Withdraw button on the sidebar
+if st.sidebar.button("Withdraw"):
+    amount = st.sidebar.number_input("Amount to Withdraw")
+    recipient = st.sidebar.text_input("Input Recipeint's Address")
+    contract.functions.withdraw(amount, recipient)
+        
+
+
+#Swap ETH for FBP3T button on the sidebar
+if st.sidebar.button("Swap ETH for FBP3T"):
+    nonce = w3.eth.get_transaction_count(pub_account)
+    txn = contract.functions.buyFBP3TfromAccount(156520000000000).buildTransaction({
+        'chainId': 42,
+        'gas': 3000000,
+        'maxFeePerGas': w3.toWei('10', 'gwei'),
+        'maxPriorityFeePerGas': w3.toWei('10', 'gwei'),
+        'nonce': nonce,
+    })
+    signed_txn = account.signTransaction(txn)
+    w3.eth.send_raw_transaction(signed_txn.rawTransaction)
+
+
+
+# This doesn't work...
+# if st.button("Swap ETH for FBP3T"):
+#     contract.functions.buyFBP3TfromAccount(
+#         156520000000000).transact({'gas': 1000000})
+
+# $ streamlit run https://raw.githubusercontent.com/streamlit/demo-uber-nyc-pickups/master/streamlit_app.py
+# How to pass a URL to streamlit
