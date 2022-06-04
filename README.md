@@ -30,6 +30,8 @@ This is the first phase of a larger project (create limit order functionality on
 - MetaMask (wallet)
 - Infura (node)
 - Kovan Test Network (blockchain)
+- Streamlit (UI)
+- Web3 & Eth_Account (Python APIs)
 
 ### Other Tech Stacks We Investigated
 
