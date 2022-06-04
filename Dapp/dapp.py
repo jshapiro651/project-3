@@ -68,18 +68,12 @@ st.write(f"The balance is {balance} WEI")
 if st.sidebar.button("Check Balance (WEI)"):
     st.write(f"The balance is {balance} WEI")
 
-# Withdraw button on the sidebar
-if st.sidebar.button("Withdraw"):
-    amount = st.sidebar.number_input("Amount to Withdraw")
-    recipient = st.sidebar.text_input("Input Recipeint's Address")
-    contract.functions.withdraw(amount, recipient)
-        
-
+swap_amount = st.sidebar.number_input("Input the amount of ETH you would like to swap.")
 
 #Swap ETH for FBP3T button on the sidebar
 if st.sidebar.button("Swap ETH for FBP3T"):
     nonce = w3.eth.get_transaction_count(pub_account)
-    txn = contract.functions.buyFBP3TfromAccount(156520000000000).buildTransaction({
+    txn = contract.functions.buyFBP3TfromAccount(swap_amount).buildTransaction({
         'chainId': 42,
         'gas': 3000000,
         'maxFeePerGas': w3.toWei('10', 'gwei'),
@@ -95,6 +89,24 @@ if st.sidebar.button("Swap ETH for FBP3T"):
 # if st.button("Swap ETH for FBP3T"):
 #     contract.functions.buyFBP3TfromAccount(
 #         156520000000000).transact({'gas': 1000000})
+
+#amount = st.sidebar.number_input("Amount to Withdraw")
+#payable_recipient = "0x74B656031DfBD104dAdFB9ac0A2A620A4170b9e7"
+# Withdraw button on the sidebar
+#if st.sidebar.button("Withdraw"):
+    #amount = st.sidebar.number_input("Amount to Withdraw")
+    #recipient = st.sidebar.text_input("Input Recipeint's Address")
+    #nonce = w3.eth.get_transaction_count(pub_account)
+    #w_txn = contract.functions.withdraw(amount, payable_recipient).buildTransaction({
+        #'chainId': 42,
+        #'gas': 3000000,
+        #'maxFeePerGas': w3.toWei('10', 'gwei'),
+        #'maxPriorityFeePerGas': w3.toWei('10', 'gwei'),
+        #'nonce': nonce,
+    #})
+    #w_signed_txn = account.signTransaction(w_txn)
+    #w3.eth.send_raw_transaction(w_signed_txn.rawTransaction)
+        
 
 # $ streamlit run https://raw.githubusercontent.com/streamlit/demo-uber-nyc-pickups/master/streamlit_app.py
 # How to pass a URL to streamlit
