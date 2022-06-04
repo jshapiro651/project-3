@@ -23,10 +23,18 @@ contract LimitOrderV3 {
         owner = payable(msg.sender);
     }
 
+    modifier onlyOwner() {
+        require(
+            msg.sender == owner,
+            "You do not have permission to execute this transaction"
+        );
+        _;
+    }
+
     event BuyFromAcct(address indexed _from, uint256 _value);
 
     // This is our main function for executing a trade - it uses the WETH balance
-    function buyFBP3TfromAccount(uint256 amountIn) external payable {
+    function buyFBP3TfromAccount(uint256 amountIn) external payable onlyOwner {
         // A contract that is spending it's own tokens needs to have a token approval (just like a wallet)
         // This automates that process
         TransferHelper.safeApprove(WETH, address(uniswapRouter), amountIn);
