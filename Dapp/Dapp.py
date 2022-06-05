@@ -86,18 +86,13 @@ if st.sidebar.button("Withdraw"):
     signed_txn = account.signTransaction(w_txn)
     w3.eth.send_raw_transaction(signed_txn.rawTransaction)
 
-
-# Deposit button
-
-
 # Swap button
-
-#swap_amount = st.sidebar.number_input("Input the amount of ETH you'd like to swap for FBP3T")
-
+swap_amount = st.sidebar.number_input(
+    "Input the amount of ETH you'd like to swap for FBP3T")
+swap_amount = w3.toWei(swap_amount, 'ether')
 if st.sidebar.button("Swap ETH for FBP3T"):
-    # st.sidebar.write(swap_amount)
     nonce = w3.eth.get_transaction_count(pub_account)
-    txn = contract.functions.buyFBP3TfromAccount(186964000000000).buildTransaction({
+    txn = contract.functions.buyFBP3TfromAccount(swap_amount).buildTransaction({
         'chainId': 42,
         'gas': 3000000,
         'maxFeePerGas': w3.toWei('10', 'gwei'),
