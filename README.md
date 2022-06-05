@@ -17,9 +17,9 @@ This is the first phase of a larger project (create limit order functionality on
 
 ### Secondary Goals
 
-- Work with some new services (
-- Evaluate some Remix Alternatives (Truffle, Hard Hat)
-- Evaluate Test Net alternatives (Kovan Test Network, Ganache-CLI, Alchemy)
+- Work with some new services
+  - Evaluate Remix Alternatives (Truffle, Hard Hat)
+  - Evaluate Test Net alternatives (Kovan Test Network, Ganache-CLI, Alchemy)
 - Collect some post-project “research questions” related to the larger scope of this project (given that we’re only finishing “phase one” of the total application).
 
 ### Our Final Tech Stack
@@ -30,6 +30,8 @@ This is the first phase of a larger project (create limit order functionality on
 - MetaMask (wallet)
 - Infura (node)
 - Kovan Test Network (blockchain)
+- Streamlit (UI)
+- Web3 & Eth_Account (Python APIs)
 
 ### Other Tech Stacks We Investigated
 
@@ -41,10 +43,10 @@ This is the first phase of a larger project (create limit order functionality on
 
 ## Project Structure
 
-- [DEPLOYMENT.md](DEPLOYMENT.md) | Instructions on how these contracts were deployed
+- [Contract Deployment](CONTRACT_DEPLOYMENT.md) | Instructions on how these contracts were deployed
 - [Contracts](Contracts/) | Final version of our contracts
 - [Images](Images/) | Images used in our documentation
-- [Experimental](Experimental/) | Various experiments we made that led us to our final implementation; consider this "test" code
+- [Experimental](Experimental/) | Various experiments we made that led us to our final implementation; consider this "not ready for prime time" code that we want to return to, in the near future
 
 ## Schedule
 
@@ -73,7 +75,6 @@ This is the first phase of a larger project (create limit order functionality on
 - Is there a way to use the customer's account to pay gas fees when initiating the trade (vs. the "sender/dapp")?
 - How do we make this completely trustless?
 - Why doesn't the withdraw show the amount withdrawn in the transaction (MetaMask)?
-- TBD (team: add any questions you have here)
 
 ## Resources
 

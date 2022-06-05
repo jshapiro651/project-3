@@ -1,4 +1,4 @@
-# Deployment Instructions
+# Contract Deployment Instructions
 
 - Select the Kovan Test Network in Metamask
 
