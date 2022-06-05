@@ -17,9 +17,9 @@ This is the first phase of a larger project (create limit order functionality on
 
 ### Secondary Goals
 
-- Work with some new services (
-- Evaluate some Remix Alternatives (Truffle, Hard Hat)
-- Evaluate Test Net alternatives (Kovan Test Network, Ganache-CLI, Alchemy)
+- Work with some new services
+  - Evaluate Remix Alternatives (Truffle, Hard Hat)
+  - Evaluate Test Net alternatives (Kovan Test Network, Ganache-CLI, Alchemy)
 - Collect some post-project “research questions” related to the larger scope of this project (given that we’re only finishing “phase one” of the total application).
 
 ### Our Final Tech Stack
