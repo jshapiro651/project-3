@@ -46,7 +46,7 @@ This is the first phase of a larger project (create limit order functionality on
 - [Contract Deployment](CONTRACT_DEPLOYMENT.md) | Instructions on how these contracts were deployed
 - [Contracts](Contracts/) | Final version of our contracts
 - [Images](Images/) | Images used in our documentation
-- [Experimental](Experimental/) | Various experiments we made that led us to our final implementation; consider this "test" code
+- [Experimental](Experimental/) | Various experiments we made that led us to our final implementation; consider this "not ready for prime time" code that we want to return to, in the near future
 
 ## Schedule
 
