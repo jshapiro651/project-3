@@ -8,6 +8,7 @@ from web3.middleware import construct_sign_and_send_raw_middleware
 from pathlib import Path
 from dotenv import load_dotenv
 import streamlit as st
+import webbrowser
 
 load_dotenv()
 
@@ -101,3 +102,10 @@ if st.sidebar.button("Swap ETH for FBP3T"):
     })
     signed_txn = account.signTransaction(txn)
     w3.eth.send_raw_transaction(signed_txn.rawTransaction)
+
+# Transaction Validation
+#st.sidebar.write("Confirm your transaction: https://kovan.etherscan.io/address/0x44bde79162d767da1f12ec8f5c16934ed48f1402 ")
+url = "https://kovan.etherscan.io/address/0x44bde79162d767da1f12ec8f5c16934ed48f1402"
+st.sidebar.markdown('## Confirm your Transaction') 
+if st.sidebar.button('Open Etherscan'):
+    webbrowser.open_new_tab(url)
