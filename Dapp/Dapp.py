@@ -90,8 +90,8 @@ if st.sidebar.button("Withdraw"):
 
     with st.spinner(text='Transaction in progress...'):
         time.sleep(3)
-        st.success('Transaction successful!')
-        st.balloons()
+        if st.success('Transaction successful!'):
+            st.balloons()
 
 # Swap button
 swap_amount = st.sidebar.number_input(
@@ -111,8 +111,8 @@ if st.sidebar.button("Swap ETH for FBP3T"):
     
     with st.spinner(text='Transaction in progress...'):
         time.sleep(3)
-        st.success('Swap successful! Enjoy your FBP3T!')
-        st.balloons()
+        if st.success('Swap successful! Enjoy your FBP3T!'):
+            st.balloons()
 
 # Transaction Validation
 #st.sidebar.write("Confirm your transaction: https://kovan.etherscan.io/address/0x44bde79162d767da1f12ec8f5c16934ed48f1402 ")
