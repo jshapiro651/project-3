@@ -120,3 +120,8 @@ url = "https://kovan.etherscan.io/address/0x44bde79162d767da1f12ec8f5c16934ed48f
 st.sidebar.markdown('## Validate your transaction') 
 if st.sidebar.button('Open Etherscan'):
     webbrowser.open_new_tab(url)
+
+
+# Main page image
+
+st.image('../Images/fbp3t.png')
