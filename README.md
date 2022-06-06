@@ -4,7 +4,7 @@
 
 - [Jason Shapiro](https://www.linkedin.com/in/jshapiro/)
 - Jon Kearney
-- Tim Wardlow
+- [Tim Wardlow](https://www.linkedin.com/in/timothy-wardlow/)
 
 ## Project Synopsis
 

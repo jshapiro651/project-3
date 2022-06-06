@@ -9,6 +9,7 @@ from pathlib import Path
 from dotenv import load_dotenv
 import streamlit as st
 import webbrowser
+import time
 
 load_dotenv()
 
@@ -62,12 +63,12 @@ st.markdown("## Welcome to our DApp!")
 st.text(" \n")
 
 st.sidebar.markdown(
-    "## Check Balance | Withdraw | Deposit | Swap ETH for FBP3T | Validate Transaction")
+    "## What can we do for you today?")
 
 # Check Balance button
 
 if st.sidebar.button("Check Balance (wei)"):
-    st.sidebar.write(f"The balance is {balance}")
+    st.sidebar.write(f"The current balance is {balance}")
 
 
 # Withdraw button
@@ -87,6 +88,11 @@ if st.sidebar.button("Withdraw"):
     signed_txn = account.signTransaction(w_txn)
     w3.eth.send_raw_transaction(signed_txn.rawTransaction)
 
+    with st.spinner(text='Transaction in progress...'):
+        time.sleep(3)
+        st.success('Transaction successful!')
+        st.balloons()
+
 # Swap button
 swap_amount = st.sidebar.number_input(
     "Input the amount of ETH you'd like to swap for FBP3T")
@@ -102,10 +108,15 @@ if st.sidebar.button("Swap ETH for FBP3T"):
     })
     signed_txn = account.signTransaction(txn)
     w3.eth.send_raw_transaction(signed_txn.rawTransaction)
+    
+    with st.spinner(text='Transaction in progress...'):
+        time.sleep(3)
+        st.success('Swap successful! Enjoy your FBP3T!')
+        st.balloons()
 
 # Transaction Validation
 #st.sidebar.write("Confirm your transaction: https://kovan.etherscan.io/address/0x44bde79162d767da1f12ec8f5c16934ed48f1402 ")
 url = "https://kovan.etherscan.io/address/0x44bde79162d767da1f12ec8f5c16934ed48f1402"
-st.sidebar.markdown('## Confirm your Transaction') 
+st.sidebar.markdown('## Validate your transaction') 
 if st.sidebar.button('Open Etherscan'):
     webbrowser.open_new_tab(url)
