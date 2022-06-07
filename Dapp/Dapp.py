@@ -107,12 +107,12 @@ if st.sidebar.button("Swap ETH for FBP3T"):
         'nonce': nonce,
     })
     signed_txn = account.signTransaction(txn)
-    w3.eth.send_raw_transaction(signed_txn.rawTransaction)
+    tx_hash = w3.eth.send_raw_transaction(signed_txn.rawTransaction)
 
     with st.spinner(text='Transaction in progress...'):
-        time.sleep(3)
-        if st.success('Swap successful! Enjoy your FBP3T!'):
-            st.balloons()
+        receipt = w3.eth.waitForTransactionReceipt(tx_hash)
+        st.success(f'Swap successful! Enjoy your FBP3T! | {dict(receipt)}')
+        st.balloons()
 
 # Transaction Validation
 #st.sidebar.write("Confirm your transaction: https://kovan.etherscan.io/address/0x44bde79162d767da1f12ec8f5c16934ed48f1402 ")
