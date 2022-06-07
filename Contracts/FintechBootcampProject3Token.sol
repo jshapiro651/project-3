@@ -1,7 +1,6 @@
 // SPDX-License-Identifier: MIT
-// Kovan Token Contract: 0x74B656031DfBD104dAdFB9ac0A2A620A4170b9e7
 pragma solidity ^0.8.6;
-
+// Token Contract: 0x2a0B774554Ba949c8918185A9B5bf0A24DFB8284
 import "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/release-v4.0/contracts/token/ERC20/ERC20.sol";
 
 contract FintechBootcampToken is ERC20 {
