@@ -108,7 +108,7 @@ if st.sidebar.button("Swap ETH for FBP3T"):
     })
     signed_txn = account.signTransaction(txn)
     w3.eth.send_raw_transaction(signed_txn.rawTransaction)
-    
+
     with st.spinner(text='Transaction in progress...'):
         time.sleep(3)
         if st.success('Swap successful! Enjoy your FBP3T!'):
@@ -116,8 +116,8 @@ if st.sidebar.button("Swap ETH for FBP3T"):
 
 # Transaction Validation
 #st.sidebar.write("Confirm your transaction: https://kovan.etherscan.io/address/0x44bde79162d767da1f12ec8f5c16934ed48f1402 ")
-url = "https://kovan.etherscan.io/address/0x44bde79162d767da1f12ec8f5c16934ed48f1402"
-st.sidebar.markdown('## Validate your transaction') 
+url = f"https://kovan.etherscan.io/address/{contract_address}"
+st.sidebar.markdown('## Validate your transaction')
 if st.sidebar.button('Open Etherscan'):
     webbrowser.open_new_tab(url)
 
