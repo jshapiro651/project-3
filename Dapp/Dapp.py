@@ -71,13 +71,13 @@ if st.sidebar.button("Check Balance (wei)"):
     st.sidebar.write(f"The current balance is {balance}")
 
 
-# Withdraw button
+# ETH Withdraw button
 amount = st.sidebar.number_input("Input amount of ETH to withdraw")
 amount = w3.toWei(amount, 'ether')
 # Create a button that calls the `send_transaction` function and returns the transaction hash
 if st.sidebar.button("Withdraw"):
     nonce = w3.eth.get_transaction_count(pub_account)
-    w_txn = contract.functions.withdraw(amount, pub_account).buildTransaction({
+    w_txn = contract.functions.withdraw_eth(amount, pub_account).buildTransaction({
         'chainId': 42,
         'gas': 3000000,
         'maxFeePerGas': w3.toWei('10', 'gwei'),
@@ -86,12 +86,34 @@ if st.sidebar.button("Withdraw"):
     })
 
     signed_txn = account.signTransaction(w_txn)
-    w3.eth.send_raw_transaction(signed_txn.rawTransaction)
+    tx_hash = w3.eth.send_raw_transaction(signed_txn.rawTransaction)
 
     with st.spinner(text='Transaction in progress...'):
-        time.sleep(3)
-        if st.success('Transaction successful!'):
-            st.balloons()
+        receipt = w3.eth.waitForTransactionReceipt(tx_hash)
+        st.success(f'Swap successful! Enjoy your ETH! | {dict(receipt)}')
+        st.balloons()
+
+# FBP3T Withdraw button
+amount = st.sidebar.number_input("Input amount of ETH to withdraw")
+amount = w3.toWei(amount, 'ether')
+# Create a button that calls the `send_transaction` function and returns the transaction hash
+if st.sidebar.button("Withdraw"):
+    nonce = w3.eth.get_transaction_count(pub_account)
+    w_txn = contract.functions.withdraw_fbp3t(amount, pub_account).buildTransaction({
+        'chainId': 42,
+        'gas': 3000000,
+        'maxFeePerGas': w3.toWei('10', 'gwei'),
+        'maxPriorityFeePerGas': w3.toWei('10', 'gwei'),
+        'nonce': nonce,
+    })
+
+    signed_txn = account.signTransaction(w_txn)
+    tx_hash = w3.eth.send_raw_transaction(signed_txn.rawTransaction)
+
+    with st.spinner(text='Transaction in progress...'):
+        receipt = w3.eth.waitForTransactionReceipt(tx_hash)
+        st.success(f'Swap successful! Enjoy your ETH! | {dict(receipt)}')
+        st.balloons()
 
 # Swap button
 swap_amount = st.sidebar.number_input(
