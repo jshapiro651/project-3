@@ -72,12 +72,12 @@ if st.sidebar.button("Check Balance (wei)"):
 
 
 # ETH Withdraw button
-amount = st.sidebar.number_input("Input amount of ETH to withdraw")
-amount = w3.toWei(amount, 'ether')
+eth_amount = st.sidebar.number_input("Input amount of ETH to withdraw")
+eth_amount = w3.toWei(eth_amount, 'ether')
 # Create a button that calls the `send_transaction` function and returns the transaction hash
-if st.sidebar.button("Withdraw"):
+if st.sidebar.button("Withdraw ETH"):
     nonce = w3.eth.get_transaction_count(pub_account)
-    w_txn = contract.functions.withdraw_eth(amount, pub_account).buildTransaction({
+    w_txn = contract.functions.withdraw_eth(eth_amount, pub_account).buildTransaction({
         'chainId': 42,
         'gas': 3000000,
         'maxFeePerGas': w3.toWei('10', 'gwei'),
@@ -94,12 +94,12 @@ if st.sidebar.button("Withdraw"):
         st.balloons()
 
 # FBP3T Withdraw button
-amount = st.sidebar.number_input("Input amount of ETH to withdraw")
-amount = w3.toWei(amount, 'ether')
+fbp3t_amount = st.sidebar.number_input("Input amount of FBP3T to withdraw")
+fbp3t_amount = w3.toWei(fbp3t_amount, 'ether')
 # Create a button that calls the `send_transaction` function and returns the transaction hash
-if st.sidebar.button("Withdraw"):
+if st.sidebar.button("Withdraw FBP3T"):
     nonce = w3.eth.get_transaction_count(pub_account)
-    w_txn = contract.functions.withdraw_fbp3t(amount, pub_account).buildTransaction({
+    w_txn = contract.functions.withdraw_fbp3t(fbp3t_amount, pub_account).buildTransaction({
         'chainId': 42,
         'gas': 3000000,
         'maxFeePerGas': w3.toWei('10', 'gwei'),
