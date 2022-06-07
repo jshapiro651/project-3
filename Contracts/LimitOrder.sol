@@ -1,9 +1,9 @@
 // SPDX-License-Identifier: MIT
-// Contract: 0x0B4e906D30f7e9FeCa7C5f1A96915C41a449AF44
+// Contract: 0x4299283381884A6f48d11039D23966759a762900
 pragma solidity ^0.8.6;
 
+import "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/release-v4.0/contracts/token/ERC20/ERC20.sol";
 import "https://github.com/Uniswap/uniswap-v3-periphery/blob/main/contracts/interfaces/ISwapRouter.sol";
-import "https://github.com/Uniswap/v3-periphery/blob/9ca9575d09b0b8d985cc4d9a0f689f7a4470ecb7/contracts/libraries/TransferHelper.sol";
 
 // Used to return any remaining balance of ETH from the swap
 interface IUniswapRouter is ISwapRouter {
@@ -37,7 +37,7 @@ contract LimitOrderV3 {
     function buyFBP3TfromAccount(uint256 amountIn) external payable onlyOwner {
         // A contract that is spending it's own tokens needs to have a token approval (just like a wallet)
         // This automates that process
-        TransferHelper.safeApprove(WETH, address(uniswapRouter), amountIn);
+        ERC20(WETH).approve(address(uniswapRouter), amountIn);
 
         uint256 deadline = block.timestamp + 15;
         address tokenIn = WETH;
@@ -111,10 +111,15 @@ contract LimitOrderV3 {
 
     // Standard Withdraw/Deposit functionality
 
-    function withdraw(uint256 amount, address payable recipient) public {
+    function withdraw_eth(uint256 amount, address payable recipient) public {
         require(recipient == owner, "You do not own this account");
         balance = address(this).balance - amount;
         return recipient.transfer(amount);
+    }
+
+    function withdraw_fbp3t(uint256 amount, address payable recipient) public {
+        require(recipient == owner, "You do not own this account");
+        ERC20(FBP3T).transfer(recipient, amount);
     }
 
     function deposit() public payable {
