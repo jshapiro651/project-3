@@ -112,7 +112,7 @@ if st.sidebar.button("Withdraw FBP3T"):
 
     with st.spinner(text='Transaction in progress...'):
         receipt = w3.eth.waitForTransactionReceipt(tx_hash)
-        st.success(f'Swap successful! Enjoy your ETH! | {dict(receipt)}')
+        st.success(f'Swap successful! Enjoy your FBP3T! | {dict(receipt)}')
         st.balloons()
 
 # Swap button
