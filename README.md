@@ -42,7 +42,7 @@ This is the first phase of a larger project (create limit order functionality on
 - Hard Hat (compiler/deployer)
 
 ## Project Structure
-
+- [Dapp Walkthrough](DAPP_WALKTHROUGH.md) | Screenshots of the dApp in action!
 - [Contracts](Contracts/) | Final version of our contracts
 - [Contract Deployment](CONTRACT_DEPLOYMENT.md) | Instructions on how these contracts were deployed
 - [Dapp Souce Code](Dapp/) | Streamlit UI & ABI files
