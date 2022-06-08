@@ -4,12 +4,10 @@ import json
 from web3 import Web3
 from eth_account import Account
 from eth_account.signers.local import LocalAccount
-from web3.middleware import construct_sign_and_send_raw_middleware
 from pathlib import Path
 from dotenv import load_dotenv
 import streamlit as st
 import webbrowser
-import time
 
 load_dotenv()
 
@@ -23,7 +21,6 @@ contract_address = os.getenv("SMART_CONTRACT_ADDRESS")
 pub_account = os.getenv("ACCOUNT")
 
 # Cache the contract on load
-
 
 @st.cache(allow_output_mutation=True)
 # Define the load_contract function
@@ -41,13 +38,8 @@ def load_contract():
     # Return the contract from the function
     return contract
 
-
 # Load the contract
 contract = load_contract()
-
-# Display balance
-balance = contract.functions.balance().call()
-#st.write(f"The balance is {balance}")
 
 # https://web3py.readthedocs.io/en/latest/web3.eth.account.html#read-a-private-key-from-an-environment-variable
 private_key = os.getenv("PRIVATE_KEY")
@@ -58,8 +50,8 @@ assert private_key.startswith(
 account: LocalAccount = Account.from_key(private_key)
 # w3.middleware_onion.add(construct_sign_and_send_raw_middleware(account))
 
-st.markdown("# Uniswap Limit Order Project")
-st.markdown("## Welcome to our DApp!")
+st.markdown("# Uniswap Limit Order Project (Phase One)")
+st.markdown("## Welcome to our dApp!")
 st.text(" \n")
 
 st.sidebar.markdown(
@@ -67,9 +59,9 @@ st.sidebar.markdown(
 
 # Check Balance button
 
-if st.sidebar.button("Check Balance (wei)"):
+balance = contract.functions.balance().call()
+if st.sidebar.button("Check Balance"):
     st.sidebar.write(f"The current balance is {balance}")
-
 
 # ETH Withdraw button
 eth_amount = st.sidebar.number_input("Input amount of ETH to withdraw")
@@ -90,7 +82,7 @@ if st.sidebar.button("Withdraw ETH"):
 
     with st.spinner(text='Transaction in progress...'):
         receipt = w3.eth.waitForTransactionReceipt(tx_hash)
-        st.success(f'Swap successful! Enjoy your ETH! | {dict(receipt)}')
+        st.success(f'Transaction successful! Enjoy your ETH! | {dict(receipt)}')
         st.balloons()
 
 # FBP3T Withdraw button
@@ -112,7 +104,7 @@ if st.sidebar.button("Withdraw FBP3T"):
 
     with st.spinner(text='Transaction in progress...'):
         receipt = w3.eth.waitForTransactionReceipt(tx_hash)
-        st.success(f'Swap successful! Enjoy your FBP3T! | {dict(receipt)}')
+        st.success(f'Transaction successful! Enjoy your FBP3T! | {dict(receipt)}')
         st.balloons()
 
 # Swap button
@@ -137,12 +129,10 @@ if st.sidebar.button("Swap ETH for FBP3T"):
         st.balloons()
 
 # Transaction Validation
-#st.sidebar.write("Confirm your transaction: https://kovan.etherscan.io/address/0x44bde79162d767da1f12ec8f5c16934ed48f1402 ")
 url = f"https://kovan.etherscan.io/address/{contract_address}"
 st.sidebar.markdown('## Validate your transaction')
 if st.sidebar.button('Open Etherscan'):
     webbrowser.open_new_tab(url)
-
 
 # Main page image
 
