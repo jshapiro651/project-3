@@ -1,5 +1,12 @@
 # dApp Walkthrough
 
+## Note: in order to execute this yourself, you will need a .env file with the following properties (all values are examples only):
+```
+WEB3_PROVIDER_URI=https://kovan.infura.io/v3/<add-your-key-here>
+SMART_CONTRACT_ADDRESS=0x...(LimitSol Deployed Contract)
+ACCOUNT=0x...(Kovan Wallet)
+PRIVATE_KEY=0x...(Kovan Wallet Private Key. If exporting from MetaMask you'll need to manually add the 0x prefix)
+```
 - Welcome to the homepage!
 
 <img src="Images/dApp-homepage.png" width="500"/>
