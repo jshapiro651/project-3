@@ -1,6 +1,6 @@
 # dApp Walkthrough
 
-## Note: in order to execute this yourself, you will need a .env file with the following properties (all values are examples only):
+### Note: in order to execute this yourself, you will need a .env file with the following properties (all values are examples only):
 ```
 WEB3_PROVIDER_URI=https://kovan.infura.io/v3/<add-your-key-here>
 SMART_CONTRACT_ADDRESS=0x...(LimitSol Deployed Contract)
