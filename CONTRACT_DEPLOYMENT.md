@@ -8,7 +8,7 @@
 
 - Create a new account for Kovan
 
-  - WARNING: MetaMask via the browser extension doesn't make it easy to delete accounts that are created. Imported accounts don't have this issue, but those that are "created" require re-installing the extension
+  - WARNING: MetaMask via the browser extension doesn't make it easy to delete accounts that are created. Imported accounts don't have this issue, but those that are "created" appear to require re-installing the extension, in order to have them removed.
 
 <img src="Images/create-account.png" width="300"/>
 
